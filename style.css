@@ -1,0 +1,150 @@
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f7;
+    color: #1d1d1f;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrolling the whole app */
+}
+
+/* View Switching Logic */
+.view {
+    display: none; /* Hide by default */
+    height: 100%;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.view.active {
+    display: flex; /* Show only if active */
+}
+
+/* Setup View Styling */
+header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+h1 { font-size: 28px; margin-bottom: 5px; }
+p { color: #86868b; font-size: 14px; }
+
+.input-group {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group label {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.input-group input {
+    border: 1px solid #d2d2d7;
+    border-radius: 8px;
+    padding: 8px;
+    width: 80px;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Timer View Styling */
+#timer-view {
+    background-color: #000;
+    color: white;
+    justify-content: space-between;
+}
+
+.timer-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: monospace;
+    font-size: 18px;
+    color: #86868b;
+}
+
+.timer-display {
+    text-align: center;
+}
+
+#disp-status {
+    font-size: 32px;
+    text-transform: uppercase;
+    color: #30d158; /* Green for Start */
+    margin-bottom: 20px;
+}
+
+.big-numbers {
+    font-size: 80px;
+    font-weight: bold;
+    font-family: monospace;
+    line-height: 1;
+}
+
+#disp-next {
+    margin-top: 20px;
+    color: #86868b;
+}
+
+/* Buttons */
+.action-buttons {
+    margin-top: auto; /* Push to bottom */
+    display: flex;
+    gap: 10px;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    flex: 1;
+    padding: 18px;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.btn:active { transform: scale(0.98); }
+
+.primary { background-color: #007aff; color: white; }
+.secondary { background-color: #e5e5ea; color: black; }
+
+/* In Dark mode (Timer view), secondary button should change */
+#timer-view .secondary { background-color: #333; color: white; }
+
+/* History List */
+.history-item {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    list-style: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.btn-small {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #007aff;
+    cursor: pointer;
+    float: left;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My HIIT Timer</title>
+    
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Link Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- iOS Support (Since iOS is picky) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon.png">
+</head>
+<body>
+
+    <!-- VIEW 1: SETUP (Main Menu) -->
+    <div id="setup-view" class="view active">
+        <header>
+            <h1>HIIT Timer</h1>
+            <p>Configure your workout</p>
+        </header>
+
+        <div class="input-group">
+            <label>Exercises (1-30)</label>
+            <input type="number" id="cfg-exercises" value="8" min="1" max="30">
+        </div>
+
+        <div class="input-group">
+            <label>Work Time (Seconds)</label>
+            <input type="number" id="cfg-work" value="20" min="1" max="180">
+        </div>
+
+        <div class="input-group">
+            <label>Rest Time (Seconds)</label>
+            <input type="number" id="cfg-rest" value="10" min="0" max="180">
+        </div>
+
+        <div class="input-group">
+            <label>Rounds (1-30)</label>
+            <input type="number" id="cfg-rounds" value="4" min="1" max="30">
+        </div>
+
+        <div class="input-group">
+            <label>Round Rest (Seconds)</label>
+            <input type="number" id="cfg-round-rest" value="60" min="0" max="180">
+        </div>
+
+        <div class="action-buttons">
+            <button id="btn-history" class="btn secondary">History</button>
+            <button id="btn-start" class="btn primary">Start Workout</button>
+        </div>
+    </div>
+
+    <!-- VIEW 2: TIMER (The Action) -->
+    <div id="timer-view" class="view">
+        <div class="timer-header">
+            <div>Round <span id="disp-round">1/4</span></div>
+            <div>Ex <span id="disp-exercise">1/8</span></div>
+        </div>
+
+        <div class="timer-display">
+            <h2 id="disp-status">GET READY</h2>
+            <div id="disp-time" class="big-numbers">00:05</div>
+            <p id="disp-next">Next: Work</p>
+        </div>
+
+        <div class="timer-controls">
+            <button id="btn-cancel" class="btn secondary">Cancel</button>
+            <button id="btn-toggle" class="btn primary">Pause</button>
+        </div>
+    </div>
+
+    <!-- VIEW 3: HISTORY -->
+    <div id="history-view" class="view">
+        <header>
+            <button id="btn-back-history" class="btn-small">← Back</button>
+            <h1>History</h1>
+        </header>
+        <ul id="history-list">
+            <!-- Items will be injected here by JS -->
+            <li class="history-item">
+                <span>No history yet...</span>
+            </li>
+        </ul>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <!-- PWA Registration Logic -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js')
+                .then(() => console.log('Service Worker Registered'))
+                .catch((err) => console.log('SW Failed:', err));
+        }
+    </script>
+</body>
+</html>
